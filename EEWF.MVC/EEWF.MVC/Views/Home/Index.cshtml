@@ -1,0 +1,122 @@
+﻿@using EEWF.Domain.DTOs.Carousel;
+@using EEWF.Domain.DTOs.Category;
+@using EEWF.Domain.DTOs.Graduate;
+@using EEWF.Domain.DTOs.Education;
+
+@using EEWF.MVC.ViewModels;
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<aside id="fh5co-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            @foreach (CarouselDto carusel in Model.carousels)
+            {
+                <li style="background-image: url('./uploads/carousel/@carusel.Image'); background-size: 100% 100%;">
+                    <div class="overlay-gradient"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>@carusel.Description</h1>
+                                    <h2>@carusel.Title</h2>
+                                    <p><a class="btn btn-primary btn-lg" href="@carusel.Url">@carusel.ButtonText</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</aside>
+
+<div id="fh5co-course-categories">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+                <h2>Course categories</h2>
+                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (CategoryDto category in Model.categories)
+            {
+                <div class="col-md-3 col-sm-6 text-center animate-box">
+                    <div class="services">
+                        <span class="icon">
+                            @Html.Raw(category?.Icon)
+                        </span>
+                        <div class="desc">
+                            <h3><a href="">@category.Name</a></h3>
+                            <p>@category.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*to do  cARUSELDE dATA gorunmur*@
+<div id="fh5co-testimonial" style="background-image: url(../assets/images/school.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+                <h2><span>Testimonials</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row animate-box">
+                    <div class="owl-carousel owl-carousel-full">
+                        @foreach (var item in Model.graduates)
+                        {
+
+                            <div class="item" >
+                                <div class="testimony-slide active text-center">
+                                    <div class="user" style="background-image: url('./uploads/graduate/@item.Image');"></div>
+                                    <span>@item.Name<br><small>@item.Degree</small></span>
+                                    <blockquote>
+                                        @*<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>*@
+                                        <p>@item.Comment</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="fh5co-course">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+                <h2>Our Course</h2>
+                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (EducationDto education in Model.educations)
+            {
+                <div class="col-md-6 animate-box">
+                    <div class="course">
+                        <a asp-action="index" asp-controller="EducationInfo" asp-route-id="@education.EducationId" class="course-img" style="background-image: url(../uploads/education/@education.Image); background-size: 100% 100%;">
+                        </a>
+                        <div class="desc">
+                            <h3><a asp-action="index" asp-controller="EducationInfo" asp-route-id="@education.EducationId">@education.Name</a></h3>
+                            <p>@education.Description</p>
+                            <span><a asp-action="index" asp-controller="EducationInfo" asp-route-id="@education.EducationId" class="btn btn-primary btn-sm btn-course">About</a></span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

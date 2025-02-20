@@ -1,0 +1,19 @@
+﻿@using EEWF.Domain.DTOs.About;
+@model AboutDto;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="fh5co-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 animate-box">
+                <h2>@Model.Title</h2>
+                <p>@Model.Description</p>
+            </div>
+            <div style="display:flex;justify-content:end" class="col-md-6">
+                <img style="height:250px" class="img-responsive" src="~/uploads/about/@Model?.Image">
+            </div>
+        </div>
+    </div>
+

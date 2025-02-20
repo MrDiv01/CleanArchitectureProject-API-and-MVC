@@ -1,0 +1,70 @@
+﻿@using EEWF.MVC.ViewModels;
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div id="fh5co-contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-push-1 animate-box">
+
+				<div class="fh5co-contact-info">
+					<h3>Contact Information</h3>
+					<ul>
+						<li class="address">@Model.Contact.Location</li>
+						<li class="phone"><a href="tel://@Model.Contact.Phone">@Model.Contact.Phone</a></li>
+						<li class="email"><a href="mailto:info@yoursite.com">@Model.Contact.Mail</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-md-6 animate-box">
+				<h3>Get In Touch</h3>
+				<form asp-action="Index" asp-controller="Contact">
+					<div class="row form-group">
+						<div class="col-md-6">
+							<!-- <label for="fname">First Name</label> -->
+							<input type="text" id="Name" asp-for="@Model.Appeal.Name" class="form-control" placeholder="Your firstname">
+							<span style="color: red;">@Html.ValidationMessageFor(x => x.Appeal.Name)</span>
+						</div>
+						<div class="col-md-6">
+							<!-- <label for="lname">Last Name</label> -->
+							<input type="text" id="Surname" asp-for="@Model.Appeal.Surname" class="form-control" placeholder="Your lastname">
+							<span style="color: red;">@Html.ValidationMessageFor(x => x.Appeal.Surname)</span>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<!-- <label for="email">Email</label> -->
+							<input type="text" id="Email" asp-for="@Model.Appeal.Email" class="form-control" placeholder="Your email address">
+							<span style="color: red;">@Html.ValidationMessageFor(x => x.Appeal.Email)</span>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<!-- <label for="subject">Subject</label> -->
+							<input type="text" id="subject" asp-for="@Model.Appeal.Subject" class="form-control" placeholder="Your subject of this message">
+							<span style="color: red;">@Html.ValidationMessageFor(x => x.Appeal.Subject)</span>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<!-- <label for="message">Message</label> -->
+							<textarea id="message" asp-for="@Model.Appeal.Message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+							<span style="color: red;">@Html.ValidationMessageFor(x => x.Appeal.Message)</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Send Message" class="btn btn-primary">
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\UniversityLifeApp.Domain\UniversityLifeApp.Domain.csproj" />
+		<PackageReference Include="FluentValidation" Version="11.5.2" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
+		<PackageReference Include="MediatR" Version="12.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+		<ProjectReference Include="..\UniveristyLifeApp.Models\UniveristyLifeApp.Models.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="CQRS\" />
+	  <None Remove="CQRS\v1\" />
+	  <None Remove="CQRS\v1\Users\" />
+	  <None Remove="CQRS\v1\Users\Commands\" />
+	  <None Remove="CQRS\v1\Users\Queries\" />
+	  <None Remove="CQRS\v1\Users\Commands\AddUser\" />
+	  <None Remove="Interfaces\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="CQRS\v1\BedRoomPhoto\Query\" />
+	  <Folder Include="CQRS\v1\Users\" />
+	  <Folder Include="CQRS\v1\Users\Commands\" />
+	  <Folder Include="CQRS\v1\Users\Queries\" />
+	  <Folder Include="CQRS\v1\Users\Commands\AddUser\" />
+	</ItemGroup>
+</Project>
